@@ -1,0 +1,30 @@
+---
+export interface Props {
+  to?: number;
+  up?: boolean;
+}
+
+const { to = 1, up = false } = Astro.props;
+---
+
+<div class="flex flex-row justify-center items-center">
+  <button
+    class="w-16 h-16 -mt-24 border-lightpink border-2 rounded-full hover:scale-110 transition-all hover:bg-lightpink/10"
+    id="nav-down"
+    data-to={to}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1"
+      class:list={["p-1 stroke-lightpink", up ? "transform rotate-180" : ""]}
+      aria-hidden="true"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M19 13l-7 7-7-7m14-8l-7 7-7-7"></path>
+    </svg>
+  </button>
+</div>

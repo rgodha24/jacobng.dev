@@ -1,30 +1,33 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import About from "../components/about.svelte";
+import Button from "../components/button.astro";
 ---
 
 <Layout>
-	<nav class=""></nav>
-	<section class="w-screen bg-blue-900 h-screen">
+	<nav class="absolute top-0 flex flex-row justify-between w-full p-4 text-4xl">
+		<h2 id="nav-down" data-to="0">
+			<a href="javascript:void" id="nav-down" data-to="1">JNG</a>
+		</h2>
+		<a href="javascript:void" id="nav-down" data-to="1">About</a>
+	</nav>
+
+	<section class="w-screen h-screen">
 		<div class="flex flex-row justify-center items-center h-full">
-			<h1 class="text-9xl text-pink-500">Jacob Ng</h1>
+			<h1 class="text-9xl text-lightpink">Jacob Ng</h1>
 		</div>
 	</section>
-	<div class="flex flex-row justify-center items-center">
-		<button
-			class="w-16 h-16 -mt-24 bg-red-500 rounded-full"
-			id="nav-down"
-			data-to="1"></button>
-	</div>
+	<Button to={1} />
 
 	<About client:load />
-	<div class="flex flex-row justify-center items-center">
-		<button
-			class="w-16 h-16 -mt-24 bg-red-500 rounded-full"
-			id="nav-down"
-			data-to="0"></button>
-	</div>
+	<Button to={0} up />
 </Layout>
+
+<style>
+	body {
+		@apply bg-bg text-pink;
+	}
+</style>
 
 <script lang="ts">
 	const buttons = document.querySelectorAll("#nav-down");
